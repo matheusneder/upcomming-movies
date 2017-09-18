@@ -7,7 +7,7 @@ It was made to be compatible with Android and iOS devices and was buit on top of
 The design of this app is based on **Domain-Driven-Design** aproach. The projects present in the solution is briefly describled below:
  - **UpcommingMovies.Core.Domain** - Holds the Data Model and Services Contracts. It's technology agnostic and takes the minimum dependency as possible of any external libraries or frameworks.
  - **UpcommingMovies.Infra.TheMovieDb** - Implements the services describled by *Core.Domain* contracts. For this app context, this project basically serves as a client for [The Movie Database](https://www.themoviedb.org) web services.
- - **UpcommingMovies.Infra.TheMovieDb.Test** -- Development time tests for *UpcommingMovies.Infra.TheMovieDb*.
+ - **UpcommingMovies.Infra.TheMovieDb.Test** - Development time tests for *UpcommingMovies.Infra.TheMovieDb*.
  - **UpcommingMovies.Infra.IoC** - Takes care of services registration. Services contracts describled by *Core.Domain* project are attached to this respective implementation here. This aproach takes advantage of the *Core.Domain*'s consumer (here, the UI projects) don't needs to meet the services implementation. The UI projects not even refer the *Infra.TheMovieDb* project.
  - **UpcommingMovies.UI** - This is the Xamarin.Forms portable project. It contains almost all UI logic and assets. 
  - **UpcommingMovies.UI.Droid** - Android platform project. This is the App project for Android Platform. It instantiate and execute *UpcommingMovies.UI*, no specific platform implementation was done for this App, that means the *UpcommingMovies.UI.Droid* didn't take any modification since was created from the template.
