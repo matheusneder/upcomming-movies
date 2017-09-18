@@ -1,6 +1,6 @@
 # Upcomming Movies
 
-This is a very simple App with purpose to deliver a list of upcomming movies to the user. The data is retrived from [The Movie Database (TMDb) Web Service](http://www.themoviedb.org).
+This is a very simple App with purpose to deliver a list of upcomming movies to the user. The data is retrived from [The Movie Database (TMDb)](http://www.themoviedb.org).
 
 It was made to be compatible with Android and iOS devices and was buit on top of [Xamarin Platform](http://www.xamarin.com/) and [Xamarin.Forms Framework](http://www.xamarin.com/forms). It also uses [Prism Library](http://github.com/PrismLibrary/Prism) to take advantage of convenient API to support MVVM pattern. 
 
