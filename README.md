@@ -6,7 +6,7 @@ This is a very simple App for the purpose of delivering a list of upcomming movi
 
 It was made to be compatible with Android and iOS devices and was buit on top of [Xamarin Platform](https://www.xamarin.com/) and [Xamarin.Forms Framework](https://www.xamarin.com/forms). It also uses [Prism Library](https://github.com/PrismLibrary/Prism) to take advantage of convenient API to support MVVM pattern and [Unity Container](https://github.com/unitycontainer/unity) as IoC/Dependecy Injection container.
 
-The design of this app is based on **Domain-Driven-Design** aproach. The projects present in the solution is briefly describled below:
+The design of this app is based on **Domain-Driven-Design** aproach. The projects in the solution is briefly describled below:
  - **UpcommingMovies.Core.Domain** - Holds the Data Model and Services Contracts. It's technology agnostic and takes the minimum dependency as possible of any external libraries or frameworks.
  - **UpcommingMovies.Infra.TheMovieDb** - Implements the services describled by *Core.Domain* contracts. For this app context, this project basically serves as a client for [The Movie Database](https://www.themoviedb.org) web services.
  - **UpcommingMovies.Infra.TheMovieDb.Test** - Development time tests for *UpcommingMovies.Infra.TheMovieDb*.
