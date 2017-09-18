@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"     
+             xmlns:i18n="clr-namespace:UpcommingMovies.UI.I18n;assembly=UpcommingMovies.UI"
+             x:Class="UpcommingMovies.UI.Views.MovieDetailPage"
+             Title="{Binding MovieDetail.Movie.Title}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="15">
+                <Label Text="{Binding MovieDetail.Movie.Title}" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="CenterAndExpand" />
+                <Image Source="{Binding MovieDetail.Image}" Margin="15" />
+                <Label Text="{Binding Source={x:Static i18n:Expressions.Genres}}" IsVisible="{Binding MovieDetail.HasGenres}" FontSize="Small" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"  />
+                <Label Text="{Binding MovieDetail.Genres}" IsVisible="{Binding MovieDetail.HasGenres}" FontSize="Small" HorizontalOptions="CenterAndExpand"  />
+                <Label Text="{Binding Source={x:Static i18n:Expressions.Overview}}" IsVisible="{Binding MovieDetail.HasOverview}" FontSize="Small" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
+                <Label Text="{Binding MovieDetail.Movie.Overview}" IsVisible="{Binding MovieDetail.HasOverview}" HorizontalOptions="CenterAndExpand" />
+                <Label Text="{Binding Source={x:Static i18n:Expressions.ReleaseDate}}" FontSize="Small" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
+                <Label Text="{Binding MovieDetail.Movie.ReleaseDate, StringFormat='{0:d}'}" FontSize="Small" HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
