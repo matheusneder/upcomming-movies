@@ -11,6 +11,11 @@ using UpcommingMovies.Infra.TheMovieDb.Exceptions;
 
 namespace UpcommingMovies.Infra.TheMovieDb.Services
 {
+    /// <summary>
+    /// Base class for consume TMDb web service. 
+    /// Abstracts authentication and i18n by ensure both api_key and language 
+    /// parameters will be supplied in each request.
+    /// </summary>
     public abstract class TheMovieDbServiceBase
     {
         private readonly TheMovieDbConfig _movieDbConfig;

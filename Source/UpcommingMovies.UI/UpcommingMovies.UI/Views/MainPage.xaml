@@ -29,15 +29,19 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal">
+                            <!-- Image -->
                             <Image Source="{Binding Image}" Margin="4" WidthRequest="85" />
                             <StackLayout Orientation="Vertical">
+                                <!-- Title -->
                                 <Label Text="{Binding Movie.Title}" FontAttributes="Bold" FontSize="Small" 
                                        LineBreakMode="TailTruncation" />
+                                <!-- Genres -->
                                 <StackLayout Orientation="Horizontal" IsVisible="{Binding HasGenres}">
                                     <Label Text="{Binding Source={x:Static i18n:Expressions.Genres}}" FontSize="Micro" 
                                            LineBreakMode="TailTruncation"  />
                                     <Label Text="{Binding Genres}" FontSize="Micro" LineBreakMode="TailTruncation" />
                                 </StackLayout>
+                                <!-- Release date -->
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{Binding Source={x:Static i18n:Expressions.ReleaseDate}}" FontSize="Micro" 
                                            LineBreakMode="TailTruncation" />

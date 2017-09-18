@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Net.Http;
 using UpcommingMovies.Core.Domain.Exceptions;
+using UpcommingMovies.Infra.TheMovieDb.I18n;
 
 namespace UpcommingMovies.Infra.TheMovieDb.Exceptions
 {
     /// <summary>
-    /// Should be used when remote service fail
+    /// Used when remote service fail.
     /// </summary>
     public class RemoteServiceException : CoreException
     {
@@ -33,5 +34,8 @@ namespace UpcommingMovies.Infra.TheMovieDb.Exceptions
         {
             Uri = uri;
         }
+
+        public override string FriendlyMessage => 
+            Expressions.RemoteServiceExceptionFriendlyMessage;
     }
 }

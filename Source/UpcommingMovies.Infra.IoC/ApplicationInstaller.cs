@@ -6,8 +6,16 @@ using UpcommingMovies.Infra.TheMovieDb.Services;
 
 namespace UpcommingMovies.Infra.IoC
 {
+    /// <summary>
+    /// Takes care of services registration. Services contracts describled by Core.Domain project 
+    /// will be binding to his respective implementation here.
+    /// </summary>
     public class ApplicationInstaller
     {
+        /// <summary>
+        /// Register the types and instances necessary to execute the application.
+        /// </summary>
+        /// <param name="container">IoC container</param>
         public static void Install(IUnityContainer container)
         {
             var theMovieDbConfigInstance = new TheMovieDbConfig()

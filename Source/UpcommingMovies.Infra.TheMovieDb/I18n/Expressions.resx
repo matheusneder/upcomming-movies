@@ -117,25 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Error" xml:space="preserve">
-    <value>Erro</value>
+  <data name="ParseResponseExceptionFriendlyMessage" xml:space="preserve">
+    <value>The server responses with an unexpected result. This could be a temporary issue. Please, try again later.</value>
   </data>
-  <data name="Genres" xml:space="preserve">
-    <value>Gêneros:</value>
+  <data name="RemoteServiceExceptionFriendlyMessage" xml:space="preserve">
+    <value>An error ocurred while trying to comunicate to a remote server. This could be a temporary issue. Please, try again later.</value>
   </data>
-  <data name="MainPageTitle" xml:space="preserve">
-    <value>Próximos filmes</value>
+  <data name="ResourceNotFoundExceptionFriendlyMessage" xml:space="preserve">
+    <value>The remote resource could not be found. This could be a temporary issue. Please, try again later.</value>
   </data>
-  <data name="Ok" xml:space="preserve">
-    <value>Ok</value>
+  <data name="ResourceUnauthorizedExceptionFriendlyMessage" xml:space="preserve">
+    <value>The remote server says you are not authorized to access the resource.</value>
   </data>
-  <data name="Overview" xml:space="preserve">
-    <value>Visão geral:</value>
+  <data name="TooManyRequestsExceptionFriendlyMessage" xml:space="preserve">
+    <value>The remote server reject the request because with a too much requests reason. Please, try again later.</value>
   </data>
-  <data name="ReleaseDate" xml:space="preserve">
-    <value>Data de lançamento:</value>
-  </data>
-  <data name="UnexpectedErrorMessage" xml:space="preserve">
-    <value>Ocorreu um erro inesperado, nos desculpe pelo inconveniente.</value>
+  <data name="TransportExceptionFriendlyMessage" xml:space="preserve">
+    <value>Sounds like network connection was closed. This could be a temporary issue. Please, try again later.</value>
   </data>
 </root>

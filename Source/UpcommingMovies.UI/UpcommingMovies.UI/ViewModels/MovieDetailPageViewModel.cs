@@ -5,6 +5,9 @@ using UpcommingMovies.UI.Models;
 
 namespace UpcommingMovies.UI.ViewModels
 {
+    /// <summary>
+    /// ViewModel class for the MovieDetailPage view.
+    /// </summary>
     public class MovieDetailPageViewModel : BindableBase, INavigationAware
     {
         private MovieDetail _movieDetail;
@@ -20,13 +23,11 @@ namespace UpcommingMovies.UI.ViewModels
         }
 
         public void OnNavigatingTo(NavigationParameters parameters)
-        {
-            
+        {   
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
-
         }
     }
 }

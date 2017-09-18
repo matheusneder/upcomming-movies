@@ -11,7 +11,6 @@ namespace UpcommingMovies.UI
 
         protected override void OnInitialized()
         {
-            //CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("pt-BR");
             InitializeComponent();
             NavigationService.NavigateAsync("NavigationPage/MainPage");
         }
@@ -21,17 +20,9 @@ namespace UpcommingMovies.UI
             Container.RegisterTypeForNavigation<NavigationPage>();
             Container.RegisterTypeForNavigation<MainPage>();
             Container.RegisterTypeForNavigation<MovieDetailPage>();
+
+            // Register Core.Domain interfaces and it's implementation!
             ApplicationInstaller.Install(Container);
-            //var theMovieDbConfigInstance = new TheMovieDbConfig()
-            //{
-            //    ApiKey = "1f54bd990f1cdfb230adb312546d765d",
-            //    ApiBaseUri = new Uri("https://xapi.themoviedb.org/3/")
-            //};
-
-            //var movieDiscoverServiceInstance = new MovieDiscoverService(theMovieDbConfigInstance);
-
-            //Container.RegisterInstance(typeof(TheMovieDbConfig), theMovieDbConfigInstance);
-            //Container.RegisterType<IMovieDiscoverService, MovieDiscoverService>();// (typeof(IMovieDiscoverService), movieDiscoverServiceInstance);
         }
     }
 }

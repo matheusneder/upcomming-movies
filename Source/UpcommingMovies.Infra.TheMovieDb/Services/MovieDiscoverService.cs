@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using UpcommingMovies.Core.Domain.Models;
@@ -14,11 +12,13 @@ using UpcommingMovies.Infra.TheMovieDb.Exceptions;
 
 namespace UpcommingMovies.Infra.TheMovieDb.Services
 {
+    /// <summary>
+    /// Core.Domain.IMovieDiscoverService implementation.
+    /// </summary>
     public class MovieDiscoverService : TheMovieDbServiceBase, IMovieDiscoverService
     {
         public MovieDiscoverService(TheMovieDbConfig theMovieDbConfig) : base(theMovieDbConfig)
         {
-            
         }
 
         private TheMovieDbImageSizeDescriptor[] ParseImageSizeDescriptors(JArray sizeDescriptors)
@@ -39,6 +39,13 @@ namespace UpcommingMovies.Infra.TheMovieDb.Services
                 : (int?)null;
         }
 
+        /// <summary>
+        /// Retrive TMDb condiguration (/configuration).
+        /// </summary>
+        /// <returns>
+        /// Configuration for build image uris.
+        /// The result type is Task because this is an async method and it must used with await operator.
+        /// </returns>
         public async Task<TheMovieDbImageConfig> RetrieveConfigurationAsync()
         {
             var jsonResult = await GetAsync("/configuration", supressLanguage: true);
@@ -71,6 +78,13 @@ namespace UpcommingMovies.Infra.TheMovieDb.Services
             }
         }
 
+        /// <summary>
+        /// Retrive gengers to be linked to movie genres. A list with all genres is retrived here.
+        /// </summary>
+        /// <returns>
+        /// List with all genres in TMDb.
+        /// The result type is Task because this is an async method and it must used with await operator.
+        /// </returns>
         public async Task<IEnumerable<Genre>> RetrieveGengersAsync()
         {
             var jsonResult = await GetAsync("/genre/movie/list");
@@ -97,9 +111,18 @@ namespace UpcommingMovies.Infra.TheMovieDb.Services
             }
         }
 
+        private TheMovieDbImageConfig imageConfigCache;
         private IEnumerable<Genre> genresCache;
         private CultureInfo genresCacheLanguage;
 
+        /// <summary>
+        /// Retrive a list of upcomming movies (with release date greater then current date).
+        /// </summary>
+        /// <param name="page">The page number to retrive.</param>
+        /// <returns>
+        /// The list of upcomming movies wrapped as a <see cref="DiscoverResult"/>.
+        /// The result type is Task because this is an async method and it must used with await operator.
+        /// </returns>
         public async Task<DiscoverResult> RetrieveUpCommingMoviesAsync(int page)
         {
             Task<IEnumerable<Genre>> genresCacheTask = null;
@@ -179,10 +202,11 @@ namespace UpcommingMovies.Infra.TheMovieDb.Services
             }
             catch (Exception e)
             {
-                throw new ParseResponseException("Error while parsing the response bady, see innerException for detail.", e);
+                throw new ParseResponseException("Error while parsing the response body, see innerException for detail.", e);
             }
         }
 
+        // Build image uri for available image which best fits the width parameter.
         private Uri BuildImageUri(TheMovieDbImageSizeDescriptor[] imageSizeDescriptors, int width, string path)
         {
             Uri result = null;
@@ -196,8 +220,6 @@ namespace UpcommingMovies.Infra.TheMovieDb.Services
 
             return result;
         }
-
-        TheMovieDbImageConfig imageConfigCache;
 
         private string BestImageSizePathSegmentForWidth(TheMovieDbImageSizeDescriptor[] imageSizeDescriptors, int width)
         {

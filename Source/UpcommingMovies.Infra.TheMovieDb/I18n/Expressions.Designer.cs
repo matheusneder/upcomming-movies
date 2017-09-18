@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UpcommingMovies.UI.I18n {
+namespace UpcommingMovies.Infra.TheMovieDb.I18n {
     using System;
     using System.Reflection;
     
@@ -40,7 +40,7 @@ namespace UpcommingMovies.UI.I18n {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("UpcommingMovies.UI.I18n.Expressions", typeof(Expressions).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("UpcommingMovies.Infra.TheMovieDb.I18n.Expressions", typeof(Expressions).GetTypeInfo().Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -62,65 +62,56 @@ namespace UpcommingMovies.UI.I18n {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error.
+        ///   Looks up a localized string similar to The server responses with an unexpected result. This could be a temporary issue. Please, try again later..
         /// </summary>
-        public static string Error {
+        public static string ParseResponseExceptionFriendlyMessage {
             get {
-                return ResourceManager.GetString("Error", resourceCulture);
+                return ResourceManager.GetString("ParseResponseExceptionFriendlyMessage", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Genres:.
+        ///   Looks up a localized string similar to An error ocurred while trying to comunicate to a remote server. This could be a temporary issue. Please, try again later..
         /// </summary>
-        public static string Genres {
+        public static string RemoteServiceExceptionFriendlyMessage {
             get {
-                return ResourceManager.GetString("Genres", resourceCulture);
+                return ResourceManager.GetString("RemoteServiceExceptionFriendlyMessage", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Upcomming Movies.
+        ///   Looks up a localized string similar to The remote resource could not be found. This could be a temporary issue. Please, try again later..
         /// </summary>
-        public static string MainPageTitle {
+        public static string ResourceNotFoundExceptionFriendlyMessage {
             get {
-                return ResourceManager.GetString("MainPageTitle", resourceCulture);
+                return ResourceManager.GetString("ResourceNotFoundExceptionFriendlyMessage", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ok.
+        ///   Looks up a localized string similar to The remote server says you are not authorized to access the resource..
         /// </summary>
-        public static string Ok {
+        public static string ResourceUnauthorizedExceptionFriendlyMessage {
             get {
-                return ResourceManager.GetString("Ok", resourceCulture);
+                return ResourceManager.GetString("ResourceUnauthorizedExceptionFriendlyMessage", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Overview:.
+        ///   Looks up a localized string similar to The remote server reject the request because with a too much requests reason. Please, try again later..
         /// </summary>
-        public static string Overview {
+        public static string TooManyRequestsExceptionFriendlyMessage {
             get {
-                return ResourceManager.GetString("Overview", resourceCulture);
+                return ResourceManager.GetString("TooManyRequestsExceptionFriendlyMessage", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Release date:.
+        ///   Looks up a localized string similar to Sounds like network connection was closed. This could be a temporary issue. Please, try again later..
         /// </summary>
-        public static string ReleaseDate {
+        public static string TransportExceptionFriendlyMessage {
             get {
-                return ResourceManager.GetString("ReleaseDate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to An unexpected error occurred, sorry for inconvenient!.
-        /// </summary>
-        public static string UnexpectedErrorMessage {
-            get {
-                return ResourceManager.GetString("UnexpectedErrorMessage", resourceCulture);
+                return ResourceManager.GetString("TransportExceptionFriendlyMessage", resourceCulture);
             }
         }
     }

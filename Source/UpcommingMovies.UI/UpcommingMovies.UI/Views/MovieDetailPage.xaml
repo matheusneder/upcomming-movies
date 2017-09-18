@@ -9,14 +9,30 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Margin="15">
-                <Label Text="{Binding MovieDetail.Movie.Title}" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="CenterAndExpand" />
+                <!-- Title -->
+                <Label Text="{Binding MovieDetail.Movie.Title}" FontAttributes="Bold" FontSize="Medium" 
+                       HorizontalOptions="CenterAndExpand" />
+                
+                <!-- Poster image -->
                 <Image Source="{Binding MovieDetail.Image}" Margin="15" />
-                <Label Text="{Binding Source={x:Static i18n:Expressions.Genres}}" IsVisible="{Binding MovieDetail.HasGenres}" FontSize="Small" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"  />
-                <Label Text="{Binding MovieDetail.Genres}" IsVisible="{Binding MovieDetail.HasGenres}" FontSize="Small" HorizontalOptions="CenterAndExpand"  />
-                <Label Text="{Binding Source={x:Static i18n:Expressions.Overview}}" IsVisible="{Binding MovieDetail.HasOverview}" FontSize="Small" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
-                <Label Text="{Binding MovieDetail.Movie.Overview}" IsVisible="{Binding MovieDetail.HasOverview}" HorizontalOptions="CenterAndExpand" />
-                <Label Text="{Binding Source={x:Static i18n:Expressions.ReleaseDate}}" FontSize="Small" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
-                <Label Text="{Binding MovieDetail.Movie.ReleaseDate, StringFormat='{0:d}'}" FontSize="Small" HorizontalOptions="CenterAndExpand" />
+                
+                <!-- Genres -->
+                <Label Text="{Binding Source={x:Static i18n:Expressions.Genres}}" IsVisible="{Binding MovieDetail.HasGenres}" 
+                       FontSize="Small" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"  />
+                <Label Text="{Binding MovieDetail.Genres}" IsVisible="{Binding MovieDetail.HasGenres}" 
+                       FontSize="Small" HorizontalOptions="CenterAndExpand"  />
+              
+                <!-- Overview -->
+                <Label Text="{Binding Source={x:Static i18n:Expressions.Overview}}" IsVisible="{Binding MovieDetail.HasOverview}" 
+                       FontSize="Small" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
+                <Label Text="{Binding MovieDetail.Movie.Overview}" IsVisible="{Binding MovieDetail.HasOverview}" 
+                       HorizontalOptions="CenterAndExpand" />
+              
+                <!-- Release date -->
+                <Label Text="{Binding Source={x:Static i18n:Expressions.ReleaseDate}}" FontSize="Small" 
+                       FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
+                <Label Text="{Binding MovieDetail.Movie.ReleaseDate, StringFormat='{0:d}'}" FontSize="Small" 
+                       HorizontalOptions="CenterAndExpand" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -1,14 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UpcommingMovies.Infra.TheMovieDb
 {
+    /// <summary>
+    /// TMDb services credential and configuration.
+    /// </summary>
     public class TheMovieDbConfig
     {
+        /// <summary>
+        /// TMDb services apiKey.
+        /// </summary>
         public string ApiKey { get; set; }
+
+        /// <summary>
+        /// TMDb services base uri.
+        /// </summary>
         public Uri ApiBaseUri { get; set; }
     }
 }

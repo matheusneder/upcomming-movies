@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UpcommingMovies.Core.Domain.Models;
 
 namespace UpcommingMovies.UI.Models
 {
+    /// <summary>
+    /// Model for MainPage/MainPageViewModel
+    /// </summary>
     public class MovieListItem
     {
         public MovieListItem(Movie movie)
@@ -17,9 +17,24 @@ namespace UpcommingMovies.UI.Models
             Image = movie.BuildBackdropImageUri(150) ?? movie.BuildPosterImageUri(150);
         }
 
+        /// <summary>
+        /// String with all genres separated by ",".
+        /// </summary>
         public string Genres { get; set; }
+
+        /// <summary>
+        /// True if the movie has at least one genre, false otherwise.
+        /// </summary>
         public bool HasGenres { get; set; }
+
+        /// <summary>
+        /// Backdrop image uri if exists or poster image uri or null.
+        /// </summary>
         public Uri Image { get; set; }
+        
+        /// <summary>
+        /// The movie object.
+        /// </summary>
         public Movie Movie { get; set; }
     }
 }
