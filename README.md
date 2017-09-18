@@ -23,4 +23,4 @@ So assuming you already had a similar enviroment, open the solution, restore Nug
 
 To run and debug Android app, at solution explorer right-click *UpcommingMovies.UI.Droid*, click "*Set as startup project*" then hit F5 and *voilà*! For iOS app you must do the same but for *UpcommingMovies.UI.iOS* project. Don't forget for iOS, to build, run and debug from a Windows box you must been connected to a mac and both windows and mac need to meet some requirements. This requirements is describled at https://developer.xamarin.com/guides/cross-platform/getting_started/requirements/.
 
-I ran and debugged the Adroid app on an Android 7 (API 25) VM (qemu, Android SDK default) and a Moto X device with Android 6 (API 23). For iOS app I used the simulator with iPhone 5s and iOS 10.3 on mac. Unfortunatelly I had no chance to test it on a iPhone device.
+I ran and debugged the Android app on an Android 7 (API 25) VM (qemu, Android SDK default) and a Moto X device with Android 6 (API 23). For iOS app I used the simulator with iPhone 5s and iOS 10.3 on mac. Unfortunatelly I had no chance to test it on a iPhone device.
