@@ -2,7 +2,7 @@
 
 This is a very simple App with purpose to deliver a list of upcomming movies to the user. The data is retrived from [The Movie Database (TMDb)](http://www.themoviedb.org).
 
-It was made to be compatible with Android and iOS devices and was buit on top of [Xamarin Platform](http://www.xamarin.com/) and [Xamarin.Forms Framework](http://www.xamarin.com/forms). It also uses [Prism Library](http://github.com/PrismLibrary/Prism) to take advantage of convenient API to support MVVM pattern. 
+It was made to be compatible with Android and iOS devices and was buit on top of [Xamarin Platform](http://www.xamarin.com/) and [Xamarin.Forms Framework](http://www.xamarin.com/forms). It also uses [Prism Library](http://github.com/PrismLibrary/Prism) to take advantage of convenient API to support MVVM pattern and [Unity Container](https://github.com/unitycontainer/unity) as IoC/Dependecy Injection container.
 
 At all, the design of this app  is based on **Domain-Driven-Design** aproach. The projects present in the solution is briefly describled below:
  - **UpcommingMovies.Core.Domain** -- This project holds the Data Model and Services Contracts. It made to be technology agnostic and it takes the minimum dependency as possible of any external libraries or frameworks.
