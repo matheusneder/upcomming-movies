@@ -17,7 +17,7 @@ The design of this app is based on **Domain-Driven-Design** aproach. The project
 
 ## How to build
 
-I did this project using Visual Studio 15.3 (2017) on Windows 10 machine with all Android and iOS development stuff installed (all installed by Visual Studio installer). To build and debug iOS app, I connected my Windows box to a macOS Sierra with Xcode 9 and Visual Studio For Mac 7. In theory it will play well on Visual Studio for Mac too, but I didn't test.
+I did this project using Visual Studio 15.3 (2017) on Windows 10 machine with all Android and iOS development stuff installed (all installed by Visual Studio installer). To build and debug iOS app, I connected my Windows box to a macOS Sierra with Xcode 9 and Visual Studio For Mac 7. In theory it will play nice on Visual Studio for Mac too, but I didn't test.
 
 So assuming you already had a similar enviroment, open the solution, restore Nuget packages and try to build. If build fail (it's common to fail at first time) you may try going to solution explorer, expand *UpcommingMovies.UI* project and look for *.xaml* files, there will be three files of this kind there: One at root (App.xaml) and two others at Views folder (MainPage.xaml and MovieDetailPage.xaml). Try to modify this files, close the Visual Studio, re-open it and try to build again (by modifing *.xaml* files, Visual Studio will generate some missing code based on it).
 
