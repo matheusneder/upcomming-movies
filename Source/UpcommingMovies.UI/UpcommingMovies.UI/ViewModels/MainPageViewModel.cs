@@ -30,6 +30,7 @@ namespace UpcommingMovies.UI.ViewModels
 
             ItemAppearingCommand = new DelegateCommand<MovieListItem>(HandleItemAppearingEvent);
             ItemTappedCommand = new DelegateCommand<MovieListItem>(HandleItemTappedEvent);
+            SearchCommand = new DelegateCommand(HandleSearchBarButtonPressed);
         }
 
         /// <summary>
@@ -47,6 +48,31 @@ namespace UpcommingMovies.UI.ViewModels
         /// Handle item tapped in order to navigate do detail page.
         /// </summary>
         public DelegateCommand<MovieListItem> ItemTappedCommand { get; set; }
+
+        /// <summary>
+        /// Handle search button pressed event.
+        /// </summary>
+        public DelegateCommand SearchCommand { get; set; }
+
+        private string _searchBarText;
+
+        /// <summary>
+        /// The search bar text.
+        /// </summary>
+        public string SearchBarText
+        {
+            get => _searchBarText;
+            set
+            {
+                // TODO: Find a better way to get searchBar "reset" event
+                if(string.IsNullOrEmpty(value))
+                {
+                    SearchBarReseted();
+                }
+
+                SetProperty(ref _searchBarText, value);
+            }
+        }
 
         private async void HandleItemTappedEvent(MovieListItem itemTapped)
         {
@@ -69,10 +95,35 @@ namespace UpcommingMovies.UI.ViewModels
             }
         }
 
+        // Force reload from first page.
+        private async Task Reload()
+        {
+            _currentPage = 0;
+            MovieList.Clear();
+
+            if (ShouldLoadNextPage())
+            {
+                await LoadNextPage();
+            }
+        }
+
+        private async void HandleSearchBarButtonPressed()
+        {
+            _isSearching = true;
+            await Reload();
+        }
+
+        private async void SearchBarReseted()
+        {
+            _isSearching = false;
+            await Reload();
+        }
+
         private int _currentPage = 0;
         private DiscoverResult _lastResult = null;
 
         private bool _loadingPage = false;
+        private bool _isSearching;
 
         /// <summary>
         /// True if a paging is in progress of load, false otherwise.
@@ -93,7 +144,7 @@ namespace UpcommingMovies.UI.ViewModels
 
             try
             {
-                var result = await _movieDicoverService.RetrieveUpCommingMoviesAsync(nextPage);
+                var result = await _movieDicoverService.RetrieveMoviesAsync(nextPage, _isSearching ? SearchBarText : null);
                 _currentPage = nextPage;
 
                 // copy movie list to the ObservableCollection
@@ -119,7 +170,7 @@ namespace UpcommingMovies.UI.ViewModels
 
         public async void OnNavigatedTo(NavigationParameters parameters)
         {
-            if (ShouldLoadNextPage())
+            if (MovieList.Count == 0 && ShouldLoadNextPage())
             {
                 await LoadNextPage();
             }

@@ -25,7 +25,7 @@ namespace UpcommingMovies.Infra.TheMovieDb.Test
         [TestMethod]
         public async Task TestRetrieveUpCommingMovies()
         {
-            var upcomming = await _movieDiscoverService.RetrieveUpCommingMoviesAsync(1);
+            var upcomming = await _movieDiscoverService.RetrieveMoviesAsync(1);
             var x = upcomming.Movies.Select(m => m.BuildBackdropImageUri(500)).ToArray();
         }
 

@@ -119,11 +119,12 @@ namespace UpcommingMovies.Infra.TheMovieDb.Services
         /// Retrive a list of upcomming movies (with release date greater then current date).
         /// </summary>
         /// <param name="page">The page number to retrive.</param>
+        /// <param name="searchTitle">If provided it will search for the given text and the date filter will not be applied.</param>
         /// <returns>
         /// The list of upcomming movies wrapped as a <see cref="DiscoverResult"/>.
         /// The result type is Task because this is an async method and it must used with await operator.
         /// </returns>
-        public async Task<DiscoverResult> RetrieveUpCommingMoviesAsync(int page)
+        public async Task<DiscoverResult> RetrieveMoviesAsync(int page, string searchTitle)
         {
             Task<IEnumerable<Genre>> genresCacheTask = null;
             Task<TheMovieDbImageConfig> imageConfigCacheTask = null;
@@ -139,12 +140,25 @@ namespace UpcommingMovies.Infra.TheMovieDb.Services
                 imageConfigCacheTask = RetrieveConfigurationAsync(); // will hold for result later
             }
 
-            var jsonResult = await GetAsync("/discover/movie", new Dictionary<string, string>()
+            string jsonResult;
+
+            if (string.IsNullOrWhiteSpace(searchTitle))
             {
-                { "primary_release_date.gte", DateTimeOffset.UtcNow.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture) },
-                //{ "sort_by", "primary_release_date.asc" },
-                { "page", page.ToString() },
-            });
+                jsonResult = await GetAsync("/discover/movie", new Dictionary<string, string>()
+                {
+                    { "primary_release_date.gte", DateTimeOffset.UtcNow.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture) },
+                    //{ "sort_by", "primary_release_date.asc" },
+                    { "page", page.ToString() }
+                });
+            }
+            else
+            {
+                jsonResult = await GetAsync("/search/movie", new Dictionary<string, string>()
+                {
+                    { "query", searchTitle },
+                    { "page", page.ToString() }
+                });
+            }
 
             try
             {

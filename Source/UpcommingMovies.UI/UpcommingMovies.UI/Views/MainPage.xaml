@@ -16,6 +16,9 @@
     </ContentPage.Resources>
 
     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <SearchBar Placeholder="{Binding Source={x:Static i18n:Expressions.Title}}"
+                   SearchCommand="{Binding SearchCommand}" 
+                   Text="{Binding SearchBarText, Mode=TwoWay}"/>
         <ListView ItemsSource="{Binding MovieList}" RowHeight="63" >
             <ListView.Behaviors>
                 <b:EventToCommandBehavior EventName="ItemAppearing" 
