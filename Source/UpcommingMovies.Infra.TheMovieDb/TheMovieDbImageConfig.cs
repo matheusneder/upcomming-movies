@@ -1,7 +1,7 @@
 ﻿namespace UpcommingMovies.Infra.TheMovieDb
 {
     /// <summary>
-    /// TMDb service image configuration. This configuration is retrived from TMDb service.
+    /// TMDb service image configuration. This configuration is retrieved from TMDb service.
     /// </summary>
     public class TheMovieDbImageConfig
     {

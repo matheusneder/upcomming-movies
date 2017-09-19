@@ -3,7 +3,7 @@
 namespace UpcommingMovies.Core.Domain.Models
 {
     /// <summary>
-    /// Represents a retrived movie list page.
+    /// Represents a retrieved movie list page.
     /// </summary>
     public class DiscoverResult
     {

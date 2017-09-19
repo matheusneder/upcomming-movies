@@ -79,7 +79,7 @@ namespace UpcommingMovies.Infra.TheMovieDb.Services
         }
 
         /// <summary>
-        /// Retrive gengers to be linked to movie genres. A list with all genres is retrived here.
+        /// Retrive gengers to be linked to movie genres. A list with all genres is retrieved here.
         /// </summary>
         /// <returns>
         /// List with all genres in TMDb.
@@ -124,7 +124,7 @@ namespace UpcommingMovies.Infra.TheMovieDb.Services
         /// The list of upcomming movies wrapped as a <see cref="DiscoverResult"/>.
         /// The result type is Task because this is an async method and it must used with await operator.
         /// </returns>
-        public async Task<DiscoverResult> RetrieveMoviesAsync(int page, string searchTitle)
+        public async Task<DiscoverResult> RetrieveMoviesAsync(int page, string searchTitle = null)
         {
             Task<IEnumerable<Genre>> genresCacheTask = null;
             Task<TheMovieDbImageConfig> imageConfigCacheTask = null;

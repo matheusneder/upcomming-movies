@@ -40,7 +40,7 @@ namespace UpcommingMovies.UI.ViewModels
 
         /// <summary>
         /// Handle ItemAppearing event of the ListView which responsible
-        /// to identify when the next page should be retrived.
+        /// to identify when the next page should be retrieved.
         /// </summary>
         public DelegateCommand<MovieListItem> ItemAppearingCommand { get; set; }
 
