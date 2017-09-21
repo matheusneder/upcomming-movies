@@ -163,9 +163,11 @@ namespace UpcommingMovies.UI.ViewModels
             {
                 await App.Current.MainPage.DisplayAlert(Expressions.Error, Expressions.UnexpectedErrorMessage, Expressions.Ok);
                 throw;
+            } 
+            finally 
+            {
+                LoadingPage = false;         
             }
-
-            LoadingPage = false;         
         }
 
         public async void OnNavigatedTo(NavigationParameters parameters)
