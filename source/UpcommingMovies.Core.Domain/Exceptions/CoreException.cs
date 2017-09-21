@@ -18,8 +18,8 @@ namespace UpcommingMovies.Core.Domain.Exceptions
         }
 
         /// <summary>
-        /// Message to the end user. Don't forget i18n.
+        /// Message to the end user. Override it and remember to take care of i18n if applicable.
         /// </summary>
-        public virtual string FriendlyMessage { get; }
+        public virtual string FriendlyMessage => Message;
     }
 }
