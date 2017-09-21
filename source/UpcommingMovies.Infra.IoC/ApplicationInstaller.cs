@@ -24,8 +24,6 @@ namespace UpcommingMovies.Infra.IoC
                 ApiBaseUri = new Uri("https://api.themoviedb.org/3/")
             };
 
-            var movieDiscoverServiceInstance = new MovieDiscoverService(theMovieDbConfigInstance);
-
             container.RegisterInstance(typeof(TheMovieDbConfig), theMovieDbConfigInstance);
             container.RegisterType<IMovieDiscoverService, MovieDiscoverService>();
         }
