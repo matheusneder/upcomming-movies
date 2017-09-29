@@ -19,7 +19,7 @@
         <SearchBar Placeholder="{Binding Source={x:Static i18n:Expressions.Title}}"
                    SearchCommand="{Binding SearchCommand}" 
                    Text="{Binding SearchBarText, Mode=TwoWay}"/>
-        <ListView ItemsSource="{Binding MovieList}" RowHeight="63" >
+        <ListView ItemsSource="{Binding MovieList}" RowHeight="63" Footer="{Binding}" >
             <ListView.Behaviors>
                 <b:EventToCommandBehavior EventName="ItemAppearing" 
                                     Command="{Binding ItemAppearingCommand}"
@@ -56,6 +56,11 @@
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            <ListView.FooterTemplate>
+                <DataTemplate>
+                    <ActivityIndicator IsRunning="{Binding LoadingPage}" />
+                </DataTemplate>
+            </ListView.FooterTemplate>
         </ListView>
     </StackLayout>
 </ContentPage>
