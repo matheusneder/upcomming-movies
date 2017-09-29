@@ -14,7 +14,7 @@ namespace UpcommingMovies.UI.Models
             Movie = movie;
             Genres = string.Join(", ", movie.Genres.Select(g => g.Name));
             HasGenres = movie.Genres.Any();
-            Image = movie.BuildBackdropImageUri(150) ?? movie.BuildPosterImageUri(150);
+            Image = movie.BuildPosterImageUri(90);
         }
 
         /// <summary>

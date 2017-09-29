@@ -227,7 +227,7 @@ namespace UpcommingMovies.Infra.TheMovieDb.Services
 
             if (!string.IsNullOrEmpty(path))
             {
-                var sizePathSegment = BestImageSizePathSegmentForWidth(imageConfigCache.BackdropSizes, width);
+                var sizePathSegment = BestImageSizePathSegmentForWidth(imageSizeDescriptors, width);
                 result = new Uri($"{imageConfigCache.SecureBaseUrl}{sizePathSegment}{path}");
                 Debug.WriteLine($"Built new image uri: {result.OriginalString}");
             }
