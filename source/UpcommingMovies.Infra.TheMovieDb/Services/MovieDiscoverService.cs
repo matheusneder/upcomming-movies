@@ -201,7 +201,9 @@ namespace UpcommingMovies.Infra.TheMovieDb.Services
                         Id = (long)jMovie["id"],
                         Title = (string)jMovie["title"],
                         Overview = (string)jMovie["overview"],
-                        ReleaseDate = DateTimeOffset.Parse((string)jMovie["release_date"]),
+                        ReleaseDate = !string.IsNullOrEmpty((string)jMovie["release_date"]) ? 
+                            DateTimeOffset.Parse((string)jMovie["release_date"]) : 
+                            default(DateTimeOffset),
                         Genres = genres,
                         BuildBackdropImageUri = (forWidth) =>
                             BuildImageUri(imageConfigCache.BackdropSizes, forWidth, (string)jMovie["backdrop_path"]),
