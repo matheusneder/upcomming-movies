@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UpcommingMovies.Core.Domain.Models;
+using Xamarin.Forms;
 
 namespace UpcommingMovies.UI.Models
 {
@@ -17,7 +18,14 @@ namespace UpcommingMovies.UI.Models
             Movie = movie;
             Genres = string.Join(", ", movie.Genres.Select(g => g.Name));
             HasGenres = movie.Genres.Any();
-            Image = movie.BuildPosterImageUri(600);
+
+            Image = new UriImageSource()
+            {
+                Uri = movie.BuildPosterImageUri(600),
+                CachingEnabled = true,
+                CacheValidity = TimeSpan.FromDays(1)
+            };
+
             HasOverview = !string.IsNullOrWhiteSpace(movie.Overview);
         }
 
@@ -44,6 +52,6 @@ namespace UpcommingMovies.UI.Models
         /// <summary>
         /// Poster image uri or null if no image found.
         /// </summary>
-        public Uri Image { get; set; }
+        public UriImageSource Image { get; set; }
     }
 }

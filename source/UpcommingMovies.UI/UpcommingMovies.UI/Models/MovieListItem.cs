@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using UpcommingMovies.Core.Domain.Models;
+using Xamarin.Forms;
 
 namespace UpcommingMovies.UI.Models
 {
@@ -14,7 +15,14 @@ namespace UpcommingMovies.UI.Models
             Movie = movie;
             Genres = string.Join(", ", movie.Genres.Select(g => g.Name));
             HasGenres = movie.Genres.Any();
-            Image = movie.BuildPosterImageUri(90);
+
+            Image = new UriImageSource()
+            {
+                Uri = movie.BuildPosterImageUri(90),
+                CachingEnabled = true,
+                CacheValidity = TimeSpan.FromDays(10)
+            };
+            
         }
 
         /// <summary>
@@ -30,7 +38,7 @@ namespace UpcommingMovies.UI.Models
         /// <summary>
         /// Backdrop image uri if exists or poster image uri or null.
         /// </summary>
-        public Uri Image { get; set; }
+        public ImageSource Image { get; set; }
         
         /// <summary>
         /// The movie object.
