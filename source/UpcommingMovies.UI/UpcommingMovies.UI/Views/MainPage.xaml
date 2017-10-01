@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             xmlns:c="clr-namespace:UpcommingMovies.UI.Converters;assembly=UpcommingMovies.UI"
+             xmlns:i18n="clr-namespace:UpcommingMovies.UI.I18n;assembly=UpcommingMovies.UI"
+             x:Class="UpcommingMovies.UI.Views.MainPage"
+             Title="{Binding Source={x:Static i18n:Expressions.MainPageTitle}}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <c:ItemVisibilityEventArgsConverter x:Key="itemVisibilityEventArgsConverter" />
+            <c:ItemTappedEventArgsConverter x:Key="itemTappedEventArgsConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <SearchBar Placeholder="{Binding Source={x:Static i18n:Expressions.Title}}"
+                   SearchCommand="{Binding SearchCommand}" 
+                   Text="{Binding SearchBarText, Mode=TwoWay}"/>
+        <ListView ItemsSource="{Binding MovieList}" RowHeight="63" Footer="{Binding}" >
+            <ListView.Behaviors>
+                <b:EventToCommandBehavior EventName="ItemAppearing" 
+                                    Command="{Binding ItemAppearingCommand}"
+                                    EventArgsConverter="{StaticResource itemVisibilityEventArgsConverter}" />
+                <b:EventToCommandBehavior EventName="ItemTapped" 
+                                    Command="{Binding ItemTappedCommand}"
+                                    EventArgsConverter="{StaticResource itemTappedEventArgsConverter}" />
+            </ListView.Behaviors>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <!-- Image -->
+                            <Image Source="{Binding Image}" Margin="4" WidthRequest="85" />
+                            <StackLayout Orientation="Vertical">
+                                <!-- Title -->
+                                <Label Text="{Binding Movie.Title}" FontAttributes="Bold" FontSize="Small" 
+                                       LineBreakMode="TailTruncation" />
+                                <!-- Genres -->
+                                <StackLayout Orientation="Horizontal" IsVisible="{Binding HasGenres}">
+                                    <Label Text="{Binding Source={x:Static i18n:Expressions.Genres}}" FontSize="Micro" 
+                                           LineBreakMode="TailTruncation"  />
+                                    <Label Text="{Binding Genres}" FontSize="Micro" LineBreakMode="TailTruncation" />
+                                </StackLayout>
+                                <!-- Release date -->
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Source={x:Static i18n:Expressions.ReleaseDate}}" FontSize="Micro" 
+                                           LineBreakMode="TailTruncation" />
+                                    <Label Text="{Binding Movie.ReleaseDate, StringFormat='{0:d}'}" FontSize="Micro" 
+                                           LineBreakMode="NoWrap" />
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.FooterTemplate>
+                <DataTemplate>
+                    <ActivityIndicator IsRunning="{Binding LoadingPage}" />
+                </DataTemplate>
+            </ListView.FooterTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
